@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: root1
+Class-Path: .
+Build-Jdk: 1.8.0_161
+Created-By: Maven Integration for Eclipse
+Main-Class: com.service.csedemo.CsedemoApplication
+

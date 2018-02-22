@@ -1,0 +1,23 @@
+package com.alibaba.dubbo.demo.provider;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.alibaba.dubbo.common.utils.DubboAppender;
+
+import javassist.bytecode.analysis.Util;
+
+/**
+ * Created by ken.lj on 2017/7/31.
+ */
+public class Provider {
+
+    public static void main(String[] args) throws Exception {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});
+        context.start();
+       // com.alibaba.dubbo.common.URL
+//        com.alibaba.DubboAppender.registry.NotifyListener
+  //      com.alibaba.dubbo.registry.RegistryService
+        System.in.read(); // 按任意键退出
+    }
+
+}

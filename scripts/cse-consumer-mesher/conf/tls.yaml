@@ -1,0 +1,24 @@
+## Mesher TLS is base on Go Chassis TLS config
+## If users wan't to use transparent, ssl config for consumer and provider must be supplied.
+#ssl:
+## The provider is the service which run in the same host/pod with mesher. for example the service name of provider is AccountService, then the ssl tag is AccountService.rest.provider
+## if u set this , no need to consider about expose your own service as https service,
+## your service can only listen on 127.0.0.1, mesher wil expose https and use http to communicate with your service
+#  AccountService.provider.cipherPlugin: default
+#  AccountService.provider.verifyPeer: false
+#  AccountService.provider.cipherSuits: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+#  AccountService.provider.protocol: TLSv1.2
+#  AccountService.provider.caFile:
+#  AccountService.provider.certFile:
+#  AccountService.provider.keyFile:
+#  AccountService.provider.certPwdFile:
+## If a service want to use transparent tls to call other services, it must supplies consumer ssl config for these services.
+## for example StoreWeb want to communicate with Account service the  config is like below
+#  AccountService.consumer.cipherPlugin: default
+#  AccountService.consumer.verifyPeer: false
+#  AccountService.consumer.cipherSuits: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+#  AccountService.consumer.protocol: TLSv1.2
+#  AccountService.consumer.caFile:
+#  AccountService.consumer.certFile:
+#  AccountService.consumer.keyFile:
+#  AccountService.consumer.certPwdFile:

@@ -1,0 +1,7 @@
+## microservice property
+APPLICATION_ID: dubboEnv # application name
+service_description:
+  name: dubbo-demo-provider # microservice name
+  version: 1.1.1 # microservice version
+#  properties: # custom properties
+#    allowCrossApp: true # allow calls across applications

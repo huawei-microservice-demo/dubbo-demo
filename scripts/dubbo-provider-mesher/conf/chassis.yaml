@@ -1,0 +1,30 @@
+---
+cse:
+  service:
+    registry: 
+      address:  http://192.168.42.73:30100
+     # address: https://cse.cn-north-1.myhwclouds.com:443 # uri of service center
+      scope: full #set full to be able to discover other app's service
+      watch: false # set if you want to watch instance change event
+      autoIPIndex: true # set to true if u want to resolve source IP to microservice
+  protocols:
+    dubboSimpleRegistry:
+      listenAddress: listenaddr:30202
+    http:
+      listenAddress: listenaddr:30101
+      ## how to let other service discover this service, it is internalIP:serverPort
+      #advertiseAddress: 127.0.0.1:30101
+    dubbo:
+      listenAddress: listenaddr:30201
+
+
+#ssl:
+## Set those config to make mesher as https service
+#  mesher.Provider.cipherPlugin: default
+#  mesher.provider.verifyPeer: false
+#  mesher.provider.cipherSuits: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+#  mesher.provider.protocol: TLSv1.2
+#  mesher.provider.caFile:
+#  mesher.provider.certFile:
+#  mesher.provider.keyFile:
+#  mesher.provider.certPwdFile:

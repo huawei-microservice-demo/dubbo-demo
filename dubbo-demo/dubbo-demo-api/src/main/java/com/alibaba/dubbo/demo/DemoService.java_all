@@ -1,0 +1,34 @@
+/*
+ * Copyright 1999-2011 Alibaba Group.
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *  
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *  
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.alibaba.dubbo.demo;
+
+public interface DemoService {
+
+    String sayHello(String name);
+    
+    String echo (String name, Integer value);
+    
+    String echoValue (String name, String value);
+    String echoCondition (byte bBy, short sTest,int iCout,long lTest, float fTest, double dTest, boolean bIs, char a);
+    String echoCondition2 (Byte bBy, Short sTest,Integer iCout,Long lTest, Float fTest, Double dTest, Boolean bIs, Character a);
+ //   String testList(List<string> lst,String str);
+    int messageCount(int old);
+    User info(User usrInfo);
+    void testvoid(String name);
+    String testList(java.util.List<String> lst); 
+    String testMap(java.util.HashMap<String,String> map);
+    String echoObj(Object obj);
+}

@@ -1,0 +1,120 @@
+package com.alibaba.dubbo.demo.consumer;
+
+import com.alibaba.dubbo.demo.*;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created by ken.lj on 2017/7/31.
+ */
+
+
+public class Consumer {
+	public static  DemoService demoService;
+	   public static void main11(String[] args) {
+	        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-consumer.xml"});
+	        context.start();
+	        demoService = (DemoService) context.getBean("demoService"); // 获取远程服务代理
+	       try{
+	        Thread thread = new Thread(){
+		    	   public void run(){
+		    	     System.out.println("Thread Running");
+		    	     java.util.LinkedList<String> lst ;
+		    	     lst = new java.util.LinkedList<String>();
+		    	     lst.add("abc");
+		    	     lst.add("aaa");
+		    	     while (true) {
+		    	    	System.out.println("demoService.testList start invoke");
+		    	        String ret = demoService.testList(lst);    
+		    	        System.out.println( "   testList : " + ret );
+		    	        try {
+		    	        Thread.sleep(5000);
+		    	        }catch(Exception e) {
+		    	        	
+		    	        }
+		    	     }
+		    	   }
+		    	};
+		    	thread.start();
+		    	Thread.sleep(2000);
+	        User usr = new User();
+	        usr.Name="dubboconsumer";
+	        usr.Age =100;
+	       usr = demoService.info(usr);
+	       
+	       System.out.println("The info invoke result:");
+	       System.out.println( "   usr.Name : " + usr.Name ); // 显示调用结果
+	       System.out.println( "   usr.Age : " + usr.Age ); // 显示调用结果
+	    	Thread.sleep(100000);
+	   }
+	    	catch(Exception e){}
+	       
+
+	       
+	   }
+
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-consumer.xml"});
+        context.start();
+        DemoService demoService = (DemoService) context.getBean("demoService"); // 获取远程服务代理
+      //  String hello = demoService.sayHello("world"); // 执行远程方法
+
+   //     System.out.println(hello); // 显示调用结果
+        
+  //      int iCount = demoService.messageCount(111);
+   //     System.out.println( "helloCount: %d" + iCount ); // 显示调用结果
+     //   User usr = new User();
+       // usr.Name="dubboconsumer";
+       // usr.Age =100;
+       // demoService.echoObj(usr);
+     //  String name = demoService.echo ("zqh", 1);
+     //   System.out.println( "ret:%s" + name ); // 显示调用结果
+  /*    byte bBy = 1;
+        short sTest=18;
+        int iCout = 364;
+        long lTest=1119910191;
+        float fTest=(float)1.7;
+        double dTest = 1.89;
+        boolean bIs = true;
+        char a = 'a';
+        String ret;
+        ret= demoService.echoCondition (bBy,sTest ,iCout,lTest, fTest, dTest, bIs,  a);
+        */
+       //ret  = demoService.echoCondition2 (bBy,sTest ,iCout,lTest, fTest, dTest, bIs,  a);
+       //   System.out.println( "ret: " + ret ); // 显示调用结果
+     //   String value= demoService.echoValue ("test", "demem test");
+       // System.out.println("The echoValue invoke result:");
+        //System.out.println( "   " + value ); // 显示调用结果
+ 
+       User usr = new User();
+        usr.Name="dubboconsumer";
+        usr.Age =100;
+       usr = demoService.info(usr);
+       
+       System.out.println("The info invoke result:");
+       System.out.println( "   usr.Name : " + usr.Name ); // 显示调用结果
+       System.out.println( "   usr.Age : " + usr.Age ); // 显示调用结果
+     //   demoService.testvoid("abc");
+       // System.out.println( "afasdf"); // 显示调用结果       
+        java.util.LinkedList<String> lst ;
+        lst = new java.util.LinkedList<String>();
+        lst.add("abc");
+        lst.add("aaa");
+        String ret = demoService.testList(lst);    
+        System.out.println( "   testList : " + ret );
+        //java.util.HashMap<String,String> map = new java.util.HashMap<String,String>();
+        //map.put("abc", "aaa");
+        //map.put("cde", "ddd");
+        //ret = demoService.testMap(map);
+     //System.out.println( "   testMap : " + ret );
+  
+        while (true) {
+        	try{
+        	Thread.sleep(10000);
+        	System.out.println( " sleep--");
+        	}
+        	catch(Exception e) {
+        	}
+        }
+    
+    }
+}

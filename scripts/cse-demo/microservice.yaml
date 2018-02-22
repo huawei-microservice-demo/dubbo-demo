@@ -1,0 +1,26 @@
+APPLICATION_ID: dubboEnv
+service_description:
+  name: csedemo
+  version: 1.1.1
+  properties:
+    allowCrossApp: false
+cse:
+  service:
+    registry:
+      address: http://serveraddress:30100
+      instance:
+        watch: false
+#  config:
+#    client:
+#      serverUri: http://:30100
+#      refreshMode: 1
+#      refresh_interval: 5000
+#  monitor:
+#    client:
+#      serverUri: http://:30100
+#  rest:
+#    address: 0.0.0.0:8080
+#  credentials:
+#    accessKey: 
+#    secretKey: 
+#    akskCustomCipher: default

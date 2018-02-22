@@ -1,0 +1,15 @@
+cse:
+  loadbalance:
+
+    serverListFilters: ZoneAware, Hiway#filter1,filter2
+
+    strategy:
+      name: RoundRobin  # Random|RoundRobin|SessionStickiness
+    retryEnabled: false # if there is error, retry request or not
+    retryOnNext: 2      # times to switch to another instance based on strategy
+    retryOnSame: 3      # times to retry on the same instance
+    backoff:            # backoff policy of retried request
+      kind: constant    # jittered/constant/zero
+      MinMs: 200        # millisecond, Minimum duration to backoff
+      MaxMs: 400        # millisecond, Maximum duration to backoff
+

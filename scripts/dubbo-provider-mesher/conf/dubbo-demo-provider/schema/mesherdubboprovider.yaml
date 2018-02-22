@@ -1,0 +1,35 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: mesherdubboprovider
+  version: 1.0.0
+  x-java-interface: com.alibaba.dubbo.demo.DemoService
+  
+# the domain of the service
+#host: api.uber.com
+
+# array of all schemes that your API supports
+#schemes:
+#  - https
+
+# will be prefixed to all paths
+basePath: /demo
+produces:
+  - application/json
+  
+paths:
+  /sayHello:
+    get:
+      operationId: sayHello
+      parameters:
+        - name: name
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: dubbo sayHello
+          schema: 
+            type: string
+

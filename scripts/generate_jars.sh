@@ -9,8 +9,15 @@ cd $HOME
 #mvn install:install-file -Dfile=./libs/dubbo-demo-api-2.5.6.jar -DgroupId=com.alibaba -DartifactId=dubbo-demo-api -Dversion=2.5.6 -Dpackaging=jar
 #mvn install:install-file -Dfile=libs/dubbo-demo-cseconsumer-2.5.6.jar -DgroupId=com.alibaba -DartifactId=dubbo-demo-api -Dversion=2.5.6 -Dpackaging=jar
 
+mkdir -p /home/root1/.m2/repository/com/alibaba/dubbo-demo-api/2.5.6
+
+mkdir -p /home/root1/.m2/repository/com/alibaba/dubbo-demo-cseconsumer/2.5.6
+
+mkdir -p /home/root1/.m2/repository/com/alibaba/dubbo-demo/2.5.6
+
 cp lib/dubbo-demo-api-2.5.6.jar /home/root1/.m2/repository/com/alibaba/dubbo-demo-api/2.5.6
 cp lib/dubbo-demo-cseconsumer-2.5.6.jar /home/root1/.m2/repository/com/alibaba/dubbo-demo-cseconsumer/2.5.6
+cp lib/dubbo-demo-2.5.6.pom /home/root1/.m2/repository/com/alibaba/dubbo-demo/2.5.6
 
 cd ../dubbo-demo/dubbo-demo-provider
 mvn clean install

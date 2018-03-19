@@ -1,0 +1,66 @@
+version: '3'
+services:
+  
+  meshprovider:
+    build:
+      context: ../dubbo-provider-mesher/
+      dockerfile: Dockerfile
+#    image: meshdubboprov:v1
+    environment: 
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
+
+  provider:
+    build:
+      context: ../dubbo-provider/
+      dockerfile: Dockerfile
+#    image: provider:v1
+    network_mode: "service:meshprovider"
+    depends_on: 
+      - "meshprovider"
+
+  meshconsumer:
+    build:
+      context: ../dubbo-consumer-mesher/
+      dockerfile: Dockerfile
+#    image: meshdubbocons:latest
+    environment:
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
+    depends_on: 
+      - "provider"    
+
+  dubboconsumer:
+    build:
+      context: ../dubbo-consumer/
+      dockerfile: Dockerfile
+#    image: consumer:v1
+    network_mode: "service:meshconsumer"
+    depends_on: 
+      - "meshconsumer"
+
+  csedemo:
+    build:
+      context: ../cse-demo/
+      dockerfile: Dockerfile
+#    image: csedemo:v1
+    depends_on: 
+      - "dubboconsumer"
+  
+  meshercsecons:
+    build:
+      context: ../cse-consumer-mesher/
+      dockerfile: Dockerfile
+#    image: meshcsecons:latest
+    environment:
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
+    network_mode: "service:csedemo"
+    depends_on: 
+      - "csedemo"
+
+  cseconsumer:
+    build:
+      context: ../cse-consumer/
+      dockerfile: Dockerfile
+#    image: cseconsumer:v1
+    network_mode: "service:csedemo"
+    depends_on: 
+      - "meshercsecons" 

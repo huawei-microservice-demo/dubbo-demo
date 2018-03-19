@@ -56,5 +56,6 @@ cd $HOME
 cp -r lib/ cse-consumer/
 cp -r lib/ dubbo-consumer/
 
+./start_sc.sh
 ./config_service_center.sh
 ./copy_mesher.sh

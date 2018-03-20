@@ -2,7 +2,7 @@
 
 This example shows you how Dubbo Microservices and CSE Microservices work parallely with the help of ServiceComb [Service center](https://github.com/ServiceComb/service-center) and Mesher. In this example we have two dubbo microservices called dubbo-consumer and dubbo-server and CSE consumer microservice. So we make use of Mesher and ServiceComb Service Center to communicate between those services. 
 
-## Get Started
+## Quick Start
 
 ***Clone or Download the code***
 
@@ -37,7 +37,7 @@ It has all the required jars in lib folder which will just be copied into lib fo
 Run the following command to see each service being built as a seperate container and ready to communicate with each other.  It takes 5 to 10 minutes for all the service to be built and to run as a docker container.  Run the following command from scripts/basic directory  to run them.
 
 ```sh
-sudo docker-compose up
+docker-compose up
 ```
 ***Step 3: Checking for output***
 
@@ -46,7 +46,7 @@ You can actually see the response messages of both dubbo-consumer and cse-consum
 ```sh
 ./get_output.sh
 ```
-## For Development purpose
+## Quick start For Development purpose
 
 People who wish to change source code and see changes made in their microservices, can follow the steps given below to generate jars for their code and run them as microservice.
 
@@ -78,7 +78,7 @@ It will download all the required maven dependencies for the project and place i
 Run the following command to see each service being built as a seperate container and ready to communicate with each other.  It takes 5 to 10 minutes for all the service to be built and to run as a docker container.  Run the following command from scripts directory to run them.
 
 ```sh
-sudo docker-compose up
+docker-compose up
 ```
 
 ***Step 3: Checking for output***

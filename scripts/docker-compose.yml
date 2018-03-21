@@ -1,22 +1,13 @@
 version: '3'
 services:
 
-  ServiceCenter:
-    image: servicecomb/service-center
-    ports:
-      - 30100:30100
-
   meshprovider:
     build:
       context: dubbo-provider-mesher/
       dockerfile: Dockerfile
 #    image: meshdubboprov:v1
     environment: 
-      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100
-    depends_on:
-      - "ServiceCenter"
-    links:
-      - ServiceCenter
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
 
   provider:
     build:
@@ -33,11 +24,10 @@ services:
       dockerfile: Dockerfile
 #    image: meshdubbocons:latest
     environment:
-      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
     depends_on: 
       - "provider"
-    links:
-      - ServiceCenter    
+ 
 
   dubboconsumer:
     build:
@@ -55,6 +45,7 @@ services:
 #    image: csedemo:v1
     depends_on: 
       - "dubboconsumer"
+
   
   meshercsecons:
     build:
@@ -62,12 +53,11 @@ services:
       dockerfile: Dockerfile
 #    image: meshcsecons:latest
     environment:
-      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
     network_mode: "service:csedemo"
     depends_on: 
       - "csedemo"
-    links:
-      - ServiceCenter
+
 
   cseconsumer:
     build:

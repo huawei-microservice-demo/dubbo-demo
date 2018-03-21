@@ -1,13 +1,13 @@
 # dubbo-demo
 
-This example shows you how Dubbo Microservices and CSE Microservices work parallely with the help of ServiceComb [Service center](https://github.com/ServiceComb/service-center) and Mesher. In this example we have two dubbo microservices called dubbo-consumer and dubbo-server and CSE consumer microservice. So we make use of Mesher and ServiceComb Service Center to communicate between those services. 
+This example shows you how Dubbo Microservices and CSE Microservices work parallely with the help of ServiceComb [Service center](https://github.com/ServiceComb/service-center) and Mesher. In this example we have three microservices such as dubbo-consumer and dubbo-server and CSE consumer microservice. So we make use of Mesher and ServiceComb Service Center to communicate between those services. 
 
 ## Quick Start
 
 ***Clone or Download the code***
 
 ```sh
-git clone https://github.com/thandayuthapani/dubbo-demo.git
+git clone https://github.com/huawei-microservice-demo/dubbo-demo.git
 ```
 or download the code as ZIP file.
 
@@ -27,7 +27,7 @@ Open scripts directory in dubbo-demo directory which had been cloned or download
 Run *set_up_env.sh* file in the scripts/basic folder.
 
 ```sh 
-cd scripts/basic
+cd dubbo-demo/scripts/basic
 ./set_up_env.sh
 ```
 It has all the required jars in lib folder which will just be copied into lib folders of dubbo-provider, dubbo-consumer, cse-comsumer and your project is now ready for running.
